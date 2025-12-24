@@ -36,7 +36,7 @@ export default function SocialSidebar() {
 
   return (
     <div
-      className={`social-sidebar ${isHovered ? 'hovered' : ''}`}
+      className="social-sidebar"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

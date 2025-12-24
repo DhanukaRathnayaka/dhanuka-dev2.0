@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Analytics } from "@vercel/analytics/next"
 import { Roboto, Libre_Baskerville, Alex_Brush, Oswald } from "next/font/google"
 import SmoothScroll from "@/components/smooth-scroll"
@@ -35,6 +35,14 @@ const oswald = Oswald({
   variable: "--font-oswald",
   display: "swap",
 })
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: "#0a1929",
+}
 
 export const metadata: Metadata = {
   title: "Portfolio - Full Stack Developer",
