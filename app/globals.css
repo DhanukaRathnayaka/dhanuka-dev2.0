@@ -1,0 +1,397 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to dark blue theme colors */
+  --darkcinzabg: #0a1929;
+  --lorenzo-dark: #0d1b2a;
+  --lorenzo-darkbk: #0d1b2a;
+  --lorenzo-light: #e3f2fd;
+  --lorenzo-accent: #64b5f6;
+  --lorenzo-text-dark: #0d1b2a;
+  --lorenzo-text-light: #ffffff;
+  --verdetitulo: #1565c0;
+  --background: #0a1929;
+
+  /* Dark blue themed design tokens */
+  --foreground: oklch(0.95 0.01 240);
+  --card: oklch(0.15 0.02 240);
+  --card-foreground: oklch(0.95 0.01 240);
+  --popover: oklch(0.12 0.02 240);
+  --popover-foreground: oklch(0.95 0.01 240);
+  --primary: oklch(0.55 0.15 240);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.25 0.03 240);
+  --secondary-foreground: oklch(0.95 0.01 240);
+  --muted: oklch(0.22 0.02 240);
+  --muted-foreground: oklch(0.65 0.02 240);
+  --accent: oklch(0.65 0.15 240);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.55 0.2 20);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.3 0.03 240);
+  --input: oklch(0.3 0.03 240);
+  --ring: oklch(0.55 0.15 240);
+  --chart-1: oklch(0.55 0.15 240);
+  --chart-2: oklch(0.65 0.15 220);
+  --chart-3: oklch(0.7 0.12 200);
+  --chart-4: oklch(0.6 0.18 260);
+  --chart-5: oklch(0.5 0.2 280);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.12 0.02 240);
+  --sidebar-foreground: oklch(0.95 0.01 240);
+  --sidebar-primary: oklch(0.55 0.15 240);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.22 0.02 240);
+  --sidebar-accent-foreground: oklch(0.95 0.01 240);
+  --sidebar-border: oklch(0.3 0.03 240);
+  --sidebar-ring: oklch(0.55 0.15 240);
+}
+
+/* Adding font-face definitions for local fonts Brier and Mona Sans */
+@font-face {
+  font-family: "Brier";
+  src: url("/fonts/Brier-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mona Sans";
+  src: url("/fonts/MonaSans-Variable.woff2") format("woff2");
+  font-weight: 200 900;
+  font-display: swap;
+  font-stretch: 75% 125%;
+}
+
+.dark {
+  /* Updated dark mode to deeper blue tones */
+  --background: oklch(0.08 0.02 240);
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.1 0.02 240);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.1 0.02 240);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.6 0.15 240);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.2 0.03 240);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.2 0.03 240);
+  --muted-foreground: oklch(0.7 0.02 240);
+  --accent: oklch(0.65 0.15 240);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.5 0.2 20);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.25 0.03 240);
+  --input: oklch(0.25 0.03 240);
+  --ring: oklch(0.55 0.15 240);
+  --chart-1: oklch(0.6 0.18 240);
+  --chart-2: oklch(0.7 0.15 220);
+  --chart-3: oklch(0.75 0.12 200);
+  --chart-4: oklch(0.65 0.18 260);
+  --chart-5: oklch(0.55 0.2 280);
+  --sidebar: oklch(0.1 0.02 240);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.6 0.15 240);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.2 0.03 240);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.25 0.03 240);
+  --sidebar-ring: oklch(0.55 0.15 240);
+}
+
+@theme inline {
+  /* Replacing default sans-serif with Roboto for narrower, taller text */
+  --font-sans: var(--font-roboto), "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  /* Replacing Katibeh with Libre Baskerville for better visual balance */
+  --font-serif: var(--font-libre-baskerville), "Georgia", serif;
+  /* Adding Gochi Hand font for the Race Day counter script text */
+  --font-gochi: "Gochi Hand", cursive;
+  --font-oswald: var(--font-oswald); /* Using Oswald variable correctly */
+
+  /* Adding custom fonts to theme */
+  --font-brier: "Brier", sans-serif;
+  --font-mona: "Mona Sans", sans-serif;
+
+  --color-verdetitulo: var(--verdetitulo);
+  --color-darkcinzabg: var(--darkcinzabg);
+
+  --color-lorenzo-dark: var(--lorenzo-dark);
+  --color-lorenzo-light: var(--lorenzo-light);
+  --color-lorenzo-accent: var(--lorenzo-accent);
+  --color-lorenzo-text-dark: var(--lorenzo-text-dark);
+  --color-lorenzo-text-light: var(--lorenzo-text-light);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Removendo overflow-x: hidden para permitir scroll horizontal controlado na masonry */
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Removendo overflow-x: hidden para permitir scroll horizontal controlado na masonry */
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply uppercase tracking-wide font-bold;
+    letter-spacing: 0.05em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    /* Disable animations for users who prefer reduced motion */
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Custom animations for enhanced effects */
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .hover-scale {
+    transition: transform 0.3s ease;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  .transition-smooth {
+    transition: all 0.3s ease;
+  }
+}
+
+.simteste {
+  color: #c8f550;
+  font-size: 1050px;
+  line-height: 600px;
+}
+
+/* Social Sidebar Styles */
+.social-sidebar {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.social-icons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.social-icon-link {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.social-icon-link:hover {
+  background: var(--icon-color);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.social-icon-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.social-sidebar.hovered .social-icon-link {
+  width: 60px;
+  height: 60px;
+}
+
+.social-tooltip {
+  position: absolute;
+  right: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.social-tooltip::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-left-color: rgba(0, 0, 0, 0.8);
+}
+
+.social-icon-link:hover .social-tooltip {
+  opacity: 1;
+  visibility: visible;
+  right: 75px;
+}
+
+.social-sidebar.hovered .social-tooltip {
+  right: 85px;
+}
+
+.vertical-line {
+  width: 2px;
+  height: 120px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+  border-radius: 1px;
+  transition: all 0.3s ease;
+}
+
+.social-sidebar.hovered .vertical-line {
+  height: 140px;
+  background: linear-gradient(to bottom, rgba(100, 181, 246, 0.6), rgba(100, 181, 246, 0.2));
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .social-sidebar {
+    right: 15px;
+  }
+
+  .social-icon-link {
+    width: 45px;
+    height: 45px;
+  }
+
+  .social-sidebar.hovered .social-icon-link {
+    width: 50px;
+    height: 50px;
+  }
+
+  .social-tooltip {
+    display: none; /* Hide tooltips on mobile */
+  }
+
+  .vertical-line {
+    height: 100px;
+  }
+
+  .social-sidebar.hovered .vertical-line {
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-sidebar {
+    right: 10px;
+  }
+
+  .social-icon-link {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-sidebar.hovered .social-icon-link {
+    width: 45px;
+    height: 45px;
+  }
+}
