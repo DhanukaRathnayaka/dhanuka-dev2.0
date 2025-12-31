@@ -113,9 +113,9 @@ export default function HeroSectionMobile() {
           className="flex gap-4 mb-12 justify-center"
         >
           {[
-            { Icon: Github, href: "https://github.com" },
-            { Icon: Linkedin, href: "https://linkedin.com" },
-            { Icon: Mail, href: "mailto:hello@example.com" },
+            { Icon: Github, href: "https://github.com/DhanukaRathnayaka" },
+            { Icon: Linkedin, href: "https://www.linkedin.com/in/dhanuka-rathnayaka/" },
+            { Icon: Mail, href: "mailto:dhanukarathnayakakck@gmail.com" },
           ].map(({ Icon, href }, idx) => (
             <a
               key={idx}
